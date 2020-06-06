@@ -1,8 +1,14 @@
 # ある人からある人に最短でたどり着く場合に経由する人の数を返すプログラム
-# 同ディレクトリ下にlinks.txtとnicknamesを置いた上で
-# 17行目に初めの人の名前を入力、18行目に探したい人の名前を入力し実行
+# 同ディレクトリ下にlinks.txtとnicknamesを置いた上で実行し
+# 初めの人の名前、探したい人の名前を入力
+
+print("Enter the name you want to strat with >>>")
+st = input() # 初めの人の名前
+print("Enter the name you want to find >>>")
+fi = input() # 探したい人の名前
 
 from collections import deque
+import time
 
 list = [[] for i in range (54)] # 格人がフォローをしている人を格納
 visited = [10**5 for i in range (54)] # 最短の探索経路長を格納(十分大きな値で初期化)
@@ -14,8 +20,8 @@ with open('nicknames.txt') as f:
         line = s_line.split()
         dict[line[1]] = int(line[0])
 
-start = (dict['alan']) # スタートの人
-find = (dict['emma']) # 見つけたい人
+start = (dict[st]) # スタートの人
+find = (dict[fi]) # 見つけたい人
 
 
 # links.txtから各人がフォローしている人のリストを作成
@@ -38,6 +44,7 @@ if start==find:
     print("me!")
     exit()
 
+t1 = time.time()
 # queueを使って幅優先探索
 # queueに要素がある間左からpopし、その人のfollow先の人を探索
 while (d):
@@ -45,8 +52,9 @@ while (d):
     for i in list[poped]:
 
         # 見つかった場合、最小経路だったらansを更新
-        if i == find:
-            ans = min(ans, visited[poped]+1)
+        if i == find and ans > visited[poped]+1:
+            ans = visited[poped]+1
+            t2 = time.time()
 
         # 前回の探索より短い探索経路を見つけたら更新、探索すべきqueueに格納
         if visited[i] > visited[poped]+1:
@@ -54,4 +62,4 @@ while (d):
             d.append(i)
 
 # ansが初期化のままだったら"not found", そうでなかったらansが答え
-print("fornd via", ans, "people") if ans!=10**3 else print("Not found\n")
+print("found via", ans, "people\ntime = ",(t2-t1)*10**3,"[10^(-3)s]") if ans!=10**3 else print("Not found\n")
