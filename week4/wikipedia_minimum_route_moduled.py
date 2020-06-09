@@ -1,5 +1,5 @@
-# ある人からある人に最短でたどり着く場合に経由する人の数を返すプログラム
-# 同ディレクトリ下にlinks.txtとnicknamesを置いた上で実行し
+# あるものからあるものに最短でたどり着く場合に経由する人の数を返すプログラム
+# 同ディレクトリ下にwikipedia_links/pages.txtとwikipedia_links/links.txtを置いた上で実行し
 # 探すスタートの名前、探したいものの名前を入力
 
 from collections import deque
