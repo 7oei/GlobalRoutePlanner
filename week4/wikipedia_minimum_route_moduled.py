@@ -1,6 +1,6 @@
 # ある人からある人に最短でたどり着く場合に経由する人の数を返すプログラム
 # 同ディレクトリ下にlinks.txtとnicknamesを置いた上で実行し
-# 初めの人の名前、探したい人の名前を入力
+# 探すスタートの名前、探したいものの名前を入力
 
 from collections import deque
 import time
@@ -25,7 +25,7 @@ def makefollowlist(list):
     with open ("wikipedia_links/links.txt") as f:
         for s_line in f:
             line = s_line.split()
-            print(line[0], line[1])
+            # print(line[0], line[1])
             follow, follower = int(line[0]), int(line[1])
             list[follow].append(follower)
 
