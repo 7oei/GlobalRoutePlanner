@@ -1,4 +1,4 @@
-# あるものからあるものに最短でたどり着く場合に経由する人の数を返すプログラム
+# あるものからあるものに最短でたどり着く場合に経由する数を返すプログラム
 # 同ディレクトリ下にwikipedia_links/pages.txtとwikipedia_links/links.txtを置いた上で実行し
 # 探すスタートの名前、探したいものの名前を入力
 
@@ -10,7 +10,6 @@ visited = [10**7 for i in range (10**7)] # 最短の探索経路長を格納(十
 dict = {}
 # 次に探索すべき人を格納するqueue
 d = deque()
-
 
 # nicknames.txtから名前と番号の辞書を作成
 def makedict(dict):
