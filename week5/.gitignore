@@ -1,3 +1,4 @@
 *.xlsx
 picture/
 visualizer/
+__pycache__/
