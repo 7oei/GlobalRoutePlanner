@@ -1,4 +1,4 @@
-# TSP
+# TSP Challenge
 - week5, week7課題
 - フォーク元 https://github.com/hayatoito/google-step-tsp-2018
 - input_7: https://github.com/hayatoito/google-step-tsp/blob/master/input_7.csv
@@ -18,13 +18,14 @@ There are 7 challenges of TSP in the assignment, from N = 5 to N = 2048:
 | Challenge 7 |                       8192 | input_7.csv | output_7.csv |
 
 # How I solved
+## 手法と結果をまとめたスライド
+授業の課題も兼ねて作ったものです。かなり詳しく書きました。(一部未完成です 2020/07/09)
+https://docs.google.com/presentation/d/1WU_MTpd8DmrmyF_k1jalVDzuBTzJ2xv3wYHle3jI900/edit?usp=sharing
 ## 初期経路
+<img src="https://user-images.githubusercontent.com/52689687/87051433-85fc0800-c23a-11ea-9e48-de1d09a9345d.png" width="800">
 
 ## improvement
-- change start node
-- 2-opt, 3-opt
-- or-1-opt, or-2-opt
-- Simulated Annealing (焼きなまし法, SA)
+<img src="https://user-images.githubusercontent.com/52689687/87052703-0a9b5600-c23c-11ea-8521-828caab4c31f.png" width="800">
 
 ## 試したもの
 - greedy nearest node
@@ -81,6 +82,8 @@ There are 7 challenges of TSP in the assignment, from N = 5 to N = 2048:
 | ----                                   | ----    | ----    | ----    | ----     | ----     | ----     | ----     | 
 | kruskal + start node 30通り             | 3291.62 | 3778.72 | 4494.42 | 8118.40  | 10539.04 | 20263.87 | 40537.49 |
 
+<img src="https://user-images.githubusercontent.com/52689687/87052043-513c8080-c23b-11ea-9766-377bd2da5749.png" width="400">
+
 ### 初期経路greedyのとき
 |                                        | N = 5   | N = 8   | N = 16  | N = 64   | N = 128  | N = 512  | N = 2048 | 
 | ----                                   | ----    | ----    | ----    | ----     | ----     | ----     | ----     | 
@@ -88,6 +91,7 @@ There are 7 challenges of TSP in the assignment, from N = 5 to N = 2048:
 | greedy + 2-opt                         | 3418.10 | 3832.29 | 4994.89 | 8970.05  | 11489.79 | 21363.60 | 42712.37 | 
 | greedy + 2-opt + or-1-opt              | 3291.62 | 3778.72 | 4494.42 | 8656.07  | 11225.87 | 20902.75 | 41638.84 | 
 | greedy + 2-opt + or-1-opt + or-2-opt   | 3291.62 | 3778.72 | 4494.42 | 8656.07  | 11225.87 | 20902.75 | 41638.84 | 
+<img src="https://user-images.githubusercontent.com/52689687/87051991-4124a100-c23b-11ea-93ea-7d6413380079.png" width="400">
 
 ### improveは2-opt + or-1-opt + or-2-optで固定し、初期経路を変えたとき
 |                                        | N = 5   | N = 8   | N = 16  | N = 64   | N = 128  | N = 512  | N = 2048 | 
@@ -97,5 +101,5 @@ There are 7 challenges of TSP in the assignment, from N = 5 to N = 2048:
 | minus_10_mean                          | 3291.62 | 3778.72 | 4494.42 | 8497.71  | 11338.02 | 21219.00 | 41247.10 |
 | kruskal                                | 3291.62 | 3778.72 | 4494.42 | 8451.45  | 10925.97 | 20894.69 | 41110.98 |
 | kruskal + start node 30通り             | 3291.62 | 3778.72 | 4494.42 | 8118.40  | 10539.04 | 20263.87 | 40537.49 |
-
+<img src="https://user-images.githubusercontent.com/52689687/87052013-484baf00-c23b-11ea-8781-cd9f1b08f75c.png" width="400">
 
