@@ -18,9 +18,11 @@ There are 7 challenges of TSP in the assignment, from N = 5 to N = 2048:
 | Challenge 7 |                       8192 | input_7.csv | output_7.csv |
 
 # How I solved
-## 手法と結果をまとめたスライド
+## 結果
+[手法と結果をまとめたスライド](https://docs.google.com/presentation/d/1WU_MTpd8DmrmyF_k1jalVDzuBTzJ2xv3wYHle3jI900/edit?usp=sharing)
 授業の課題も兼ねて作ったものです。かなり詳しく書きました。(一部未完成です 2020/07/09)
-https://docs.google.com/presentation/d/1WU_MTpd8DmrmyF_k1jalVDzuBTzJ2xv3wYHle3jI900/edit?usp=sharing
+[Visualizer](https://yuri-flower.github.io/google-step-tsp/visualizer/build/default/index.html)
+
 ## 初期経路
 <img src="https://user-images.githubusercontent.com/52689687/87051433-85fc0800-c23a-11ea-9e48-de1d09a9345d.png" width="800">
 
