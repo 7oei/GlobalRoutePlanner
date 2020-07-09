@@ -131,7 +131,7 @@ def minus_k_mean_distance(dist, N, k):
 
 
 
-def kruskal(dist, N, st):
+def kruskal(dist, N, start):
     tree = UnionFind(N)
     relation = [[] for i in range(N)]
     one_array_dist = list(itertools.chain.from_iterable(dist))
@@ -157,11 +157,9 @@ def kruskal(dist, N, st):
     relation[edge[0]].append(edge[1])
     relation[edge[1]].append(edge[0])
 
-    current_city = st
-    unvisited_cities = set(range(0, N))
+    current_city = start
+    unvisited_cities = set(range(1, N))
     tour = [current_city]
-    unvisited_cities.remove(current_city)
-
     next_city = relation[current_city][0]
     while unvisited_cities:
         unvisited_cities.remove(next_city)
@@ -185,21 +183,22 @@ def solve(cities):
 
     dist = [[0] * N for i in range(N)]
     dist = get_euclidean_distance(cities,N,dist)
-    dist = minus_k_mean_distance(dist, N, 10)
+    
+    for start in range (min(10, N)):
+        tour = kruskal(dist, N, start)
+        # tour = two_opt(tour, dist)
+        # tour = one_or_opt(tour, dist)
+        # tour = two_or_opt(tour, dist)
 
-    for st in range(min(N,10)):
-        tour = kruskal(dist, N, st)
-        tour = two_opt(tour, dist)
-        tour = one_or_opt(tour, dist)
-        tour = two_or_opt(tour, dist)
+        # 最も距離の短いものを選択
         if sum_dis>total_distance(tour,dist):
             ans_tour = tour
             sum_dis = total_distance(tour,dist)
 
-    return ans_tour, dist
+    return ans_tour
 
 
 if __name__ == '__main__':
     assert len(sys.argv) > 1
-    tour, dist = solve(read_input(sys.argv[1]))
-    print_tour(tour)
+    cities=read_input(sys.argv[1])
+    print_tour(solve(cities))

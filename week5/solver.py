@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
 
+# two_opt
+# three_opt
+
 import sys
 import math
 import random
@@ -84,7 +87,7 @@ def change_two(tour,dist):
             for j in range(i+2,N+1):
                 A,B,C,D = tour[i-1],tour[i],tour[j-1],tour[j%N]
                 if dist[A][B]+dist[C][D] > dist[A][C]+dist[B][D]:
-                    tour[i:j] = reversed(tour[i:j])
+                    tour[i:j] = tour[:i]+tour[j-1:i-1:-1]+tour[j:]
                     # print(A,B,C,D,tour)
                     improved=True
     return tour,dist
